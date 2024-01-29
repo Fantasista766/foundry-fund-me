@@ -1,66 +1,58 @@
-## Foundry
+# Usage
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Deploy:
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+```
+forge script script/DeployFundMe.s.sol
 ```
 
-### Test
+## Testing
 
-```shell
-$ forge test
+
+```
+forge test
 ```
 
-### Format
+or 
 
-```shell
-$ forge fmt
+```
+forge test --match-test testFunctionName
 ```
 
-### Gas Snapshots
+### Test Coverage
 
-```shell
-$ forge snapshot
+```
+forge coverage
 ```
 
-### Anvil
+# Deployment to a testnet or mainnet
 
-```shell
-$ anvil
+Deploy
+
+```
+forge script script/DeployFundMe.s.sol --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY
 ```
 
-### Deploy
+## Scripts
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+forge script script/Interactions.s.sol --rpc-url sepolia  --private-key $PRIVATE_KEY  --broadcast
 ```
 
-### Cast
+## Estimate gas
 
-```shell
-$ cast <subcommand>
+You can estimate how much gas things cost by running:
+
+```
+forge snapshot
 ```
 
-### Help
+And you'll see an output file called `.gas-snapshot`
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+
+# Formatting
+
+To run code formatting:
+```
+forge fmt
 ```
